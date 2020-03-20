@@ -9,5 +9,6 @@ router.register(r'tarefas', views.ViewDaTarefa, 'tarefa')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("signup/", views.CriacaoUsuario.as_view(), name="registro"),
     path('', include(router.urls))
 ]

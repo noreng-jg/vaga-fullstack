@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'todo',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
 ]
 
 MIDDLEWARE = [
@@ -93,7 +94,7 @@ REST_FRAMEWORK={
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES':(
-        'rest_framework_jwt.authentication.JSONWebAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     )

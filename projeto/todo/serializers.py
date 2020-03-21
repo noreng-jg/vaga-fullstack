@@ -17,16 +17,26 @@ class SerializiadorTarefa(serializers.ModelSerializer):
 
 #Serializador de usuario para autentificacao
 class SerializadorUsuario(serializers.ModelSerializer):
+    
+    password2=serializers.CharField(style={'input_type':'password'}, write_only=True)
+    password=serializers.CharField(style={'input_type':'password'}, write_only=True)
+    
     class Meta:
         model=User
-        fields=('username', 'email', 'password')
-        extra_kwargs={'password': {'write_only': True}} #oculta caracteres digitados no form
+        fields=('username', 'email', 'password', 'password2')
+        
 
     def create(self, validated_data): #Cadastro de um novo usuario
         user=User(
             email=validated_data['email'],
-            username=validated_data['username']
+            username=validated_data['username'],
         )
+        password=self.validated_data['password']
+        password2=self.validated_data['password2']
+        
+        if password!=password2:
+            raise serializers.ValidationError({'password':'As senhas não conferem'})
+        
         user.set_password(validated_data['password'])
         user.save()
         Token.objects.create(user=user)

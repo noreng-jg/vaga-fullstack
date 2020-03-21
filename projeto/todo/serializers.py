@@ -5,6 +5,10 @@ from rest_framework.authtoken.models import Token
 
 
 class SerializiadorTarefa(serializers.ModelSerializer):
+    criado_por=serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
+    )
+    
     class Meta:
         model=Tarefa
         #pela descricao do modelo

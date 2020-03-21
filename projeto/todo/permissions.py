@@ -12,3 +12,7 @@ class UsuarioAdm(permissions.BasePermission):
     
     def tem_permissao_obj(self, request, view, obj):
         return request.user and request.is_staff
+
+class IsOwner(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return request.user==obj.owner

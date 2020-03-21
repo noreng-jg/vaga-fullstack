@@ -1,13 +1,15 @@
 from rest_framework import serializers
 from .models import Tarefa
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
+
 
 class SerializiadorTarefa(serializers.ModelSerializer):
     class Meta:
         model=Tarefa
         #pela descricao do modelo
         fields=('id','descricao', 'criado_por', 'concluida')
-
+    
 
 #Serializador de usuario para autentificacao
 class SerializadorUsuario(serializers.ModelSerializer):
@@ -23,4 +25,5 @@ class SerializadorUsuario(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.save()
+        Token.objects.create(user=user)
         return user

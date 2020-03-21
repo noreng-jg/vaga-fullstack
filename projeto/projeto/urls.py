@@ -11,5 +11,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("signup/", views.CriacaoUsuario.as_view(), name="registro"),
     path('', include(router.urls)),
-    path('auth/' ,include('rest_auth.urls'))
+    path('' ,include('rest_auth.urls'))
 ]

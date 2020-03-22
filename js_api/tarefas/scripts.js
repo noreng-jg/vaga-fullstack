@@ -1,10 +1,18 @@
 const url='https://jsonplaceholder.typicode.com/todos';
 
+
+function pegar9primeiros(dados){
+    let arr= new Array();
+    for(i=0; i<9; i++){
+        arr.push(dados[i])    
+    }
+    return arr;
+}
+
 axios.get(url)
   .then(function (response) {
-    
-    data=response.data;
-    console.log(data[0].id);
+    data=pegar9primeiros(response.data);
+    console.log(data);
     //ir jogando e construindo a lógica
   })
   .catch(function (error) {
@@ -14,3 +22,4 @@ axios.get(url)
   .then(function () {
     // sempre executada, independente da resposta
   });
+

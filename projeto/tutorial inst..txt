@@ -1,0 +1,11 @@
+Instale o Postgres, e crie um banco de dados chamado: 
+
+Crie um ambiente virtual com o python3.6 ou 3.7
+
+
+Instale as dependencias em requirements.txt:
+pip install --upgrade -r requirements.txt
+
+
+
+

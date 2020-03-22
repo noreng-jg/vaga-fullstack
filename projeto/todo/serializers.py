@@ -23,13 +23,15 @@ class SerializadorUsuario(serializers.ModelSerializer):
     
     class Meta:
         model=User
-        fields=('username', 'email', 'password', 'password2')
+        fields=('username', 'email', 'first_name','last_name','password', 'password2')
         
 
     def create(self, validated_data): #Cadastro de um novo usuario
         user=User(
             email=validated_data['email'],
             username=validated_data['username'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
         )
         password=self.validated_data['password']
         password2=self.validated_data['password2']

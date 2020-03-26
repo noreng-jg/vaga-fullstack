@@ -4,6 +4,8 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Test APP</title>
+        <!--Bibliotecas de criptocrafia do lado do cliente-->
+    
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
         <link href="style.css" rel="stylesheet" />
@@ -18,13 +20,11 @@
 <form action="" method="post">
   
   <div class="container">
-    <label for="email"><b>Usuário</b></label>
-    <input type="text" placeholder="Entre com o nome de usuário" name="uname" required>
-
+    <label for="user"><b>Usuário</b></label>
+    <input id="user" type="text" placeholder="Entre com o nome de usuário" name="uname" required>
     <label for="psw"><b>Senha</b></label>
-    <input type="password" placeholder="Entre com a senha" name="psw" required>
-        
-    <button type="submit">Entrar</button>
+    <input id="pass" type="password" placeholder="Entre com a senha" name="psw" required>
+    <input type="button" class="btn btn-success" onclick="show_console_response()" value="Entrar"></input>
    
   </div>
 

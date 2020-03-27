@@ -1,3 +1,5 @@
+const base_path='http://127.0.0.1:8000/';
+
 async function postData(url = '', data = {}) {    
   const response = await fetch(url, {
     method: 'POST', 
@@ -18,21 +20,25 @@ function get_pass(){
   return document.getElementById("pass").value;
 }
 
+function previous_path(){
+  return location.pathname.substring(0, location.pathname
+    .lastIndexOf('/'));
+}
+
 function show_console_response(){
 dados={};
 dados['username']=get_user();
 dados['password']=get_pass();
-response=postData('http://127.0.0.1:8000/login/',dados);
+response=postData(base_path+'login/',dados);
 response.then((dados)=>{
-
-//Validation of the response
-
-//alert
-
+//manage wrong data with alerts
+var data={
+  token_type:'Token',
+  access_token:dados.key
+}
+window.localStorage.setItem('token',  JSON.stringify(data));
+location.assign(previous_path()+'/tarefas/todos.html');
 });
 }
 
-function print_type(){
-  console.log(get_user())
-}
 

@@ -1,4 +1,4 @@
-async function getData(url = '') {
+async function getData(url = '', data) {
     const response = await fetch(url, {
       method: 'GET', 
       headers: {
@@ -9,14 +9,14 @@ async function getData(url = '') {
     return response.json(); 
 }
 
+
+
 const base_path='http://127.0.0.1:8000/';
 
-getData(base_path+'tarefas/')
+getData(base_path+'tarefas/', data)
 .then((data) => {
     preencher_tarefas(data);
 });
-
-
 
 //elemento li
 function cria_uma_linha(dado){
@@ -29,20 +29,23 @@ function cria_uma_linha(dado){
     delitem.id=dado.id;
     delitem.className="deletearea";
     var ard= document.createElement("button");
+    ard.addEventListener("click", event=>destroyTask(dado.id))
     var id=document.createElement('i');
     id.className="delete-icon glyphicon glyphicon-trash";
     ard.appendChild(id);
     delitem.appendChild(ard)
+    
 
     var updateitem= document.createElement("div");
     updateitem.id=dado.id;
     updateitem.className="updatearea";
     var aru= document.createElement("button");
+    aru.addEventListener("click", event=>teste())
     var ic= document.createElement('i');
     ic.className="delete-icon glyphicon glyphicon-pencil";
     aru.appendChild(ic);
-    updateitem.appendChild(aru)
-  
+    updateitem.append(aru);    
+
     var checkitem= document.createElement("div");
     var box= document.createElement("input");
     box.type="checkbox";
@@ -77,3 +80,4 @@ function preencher_tarefas(dados){
             document.getElementById("nao_concluidas").appendChild(li);
     }
 }
+

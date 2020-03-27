@@ -9,7 +9,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
         <link href="style.css" rel="stylesheet" />
-        <script src="index.js"></script>
+         <script src="index.js"></script>
+         <script src="tarefas/crud_tarefas.js"></script>
+  
+
   </head>
 
   
@@ -19,17 +22,18 @@
 
 <form action="" method="post">
   
-  <div class="container">
+  <div class="login" id="home">
     <label for="user"><b>Usuário</b></label>
     <input id="user" type="text" placeholder="Entre com o nome de usuário" name="uname" required>
     <label for="psw"><b>Senha</b></label>
     <input id="pass" type="password" placeholder="Entre com a senha" name="psw" required>
     <input type="button" class="btn btn-success" onclick="show_console_response()" value="Entrar"></input>
-   
+    <span class="psw">Não é membro, registre-se <a id="entrar" href="registro/registro.html">aqui</a></span>
   </div>
 
-  
-  <span class="psw">Não é membro, registre-se <a id="entrar" href="registro/registro.html">aqui</a></span>
+  <div class="registro" id="reg">
+    
+  </div>
   
 
 </form>

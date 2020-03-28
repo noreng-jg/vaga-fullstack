@@ -1,0 +1,14 @@
+h1{
+    color: blueviolet;
+}
+
+.logintask{
+    width:100px;
+    max-width:1120px;
+    height:100vh;
+    display:flex;
+    margin: 0 auto;
+    align-items:center;
+    justify-content: center;
+
+}

@@ -1,0 +1,15 @@
+h1{
+    color: blueviolet;
+    text-align: center;
+}
+
+.registerbox{
+    width:100px;
+    max-width:1120px;
+    height:100vh;
+    display:flex;
+    margin: 0 auto;
+    align-items:center;
+    justify-content: center;
+
+}

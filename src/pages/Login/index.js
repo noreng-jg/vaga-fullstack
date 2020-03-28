@@ -1,5 +1,6 @@
 import React from 'react';
-import './styles.css'
+import {Link} from 'react-router-dom';
+import './styles.css';
 
 export default function Login(){
     return (
@@ -9,9 +10,9 @@ export default function Login(){
     <input placeholder="Entre com o usuário"/>
     <input placeholder="Entre com a senha"/>  
     <button type="submit">Entrar</button>
-    <a href='/regitro'>
+    <Link to='/signup'>
         Não tem registro?
-    </a>
+    </Link>
     </form>        
     </div>
     );

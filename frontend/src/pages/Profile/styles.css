@@ -1,0 +1,51 @@
+.row{
+    padding-bottom: 30px;
+}
+ul {
+    list-style-type: none;
+    text-align: left;
+  }
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    height: 38px;
+    width: 40px;
+    padding: 0;
+}
+
+.newTaskInput{
+    width:350px;
+}
+
+.textArea ::placeholder {
+    color: #0a0a0a;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    
+}
+
+.textArea input{
+    width: 250px;
+    height:38px;
+}
+
+.logoutArea{
+    right: -150px;
+    top: 10px;
+    position: absolute;
+}
+
+.Header-tasks{
+    margin: 0 auto;
+    padding: 40px;
+    position: relative;
+}
+
+
+
+.tasks-container{
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}

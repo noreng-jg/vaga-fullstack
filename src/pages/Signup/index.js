@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './styles.css';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
 
 export default function Signup(){
@@ -11,6 +11,8 @@ export default function Signup(){
     const [last_name, Setlast_name]=useState('');
     const [password, Setpassword]=useState('');
     const [password2, Setpassword2]=useState('');
+
+    const history=useHistory();
 
     async function HandleRegister(event){
         event.preventDefault();//previnir refresh
@@ -35,10 +37,10 @@ export default function Signup(){
             }
             );    
             alert(`Cadastro concluido com sucesso: ${Object.values(response)[1]}`);
+            history.push('/');
         }
         catch(e){
             alert('Erro no cadastro');
-            console.log(register);
         }
     }
 

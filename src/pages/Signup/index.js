@@ -35,7 +35,8 @@ export default function Signup(){
                     "content-type": "application/json",
                 }
             }
-            );    
+            );
+            //estado da reposta http    
             alert(`Cadastro concluido com sucesso: ${Object.values(response)[1]}`);
             history.push('/');
         }
@@ -46,9 +47,11 @@ export default function Signup(){
 
     return (
     <div className="registerbox">
-    <h1>Cadastro</h1>
+    
 
     <form onSubmit={HandleRegister}>
+        <h1>Registro</h1>
+        <br/>
         <input 
         placeholder="Nome para o usuário"
         value={username}
@@ -87,15 +90,18 @@ export default function Signup(){
         value={password2}
         onChange={e=>Setpassword2(e.target.value)}
         />
-
-        <button className="button" type="submit">
+        <br/>
+        <br/>
+        <button className="btn btn-success" type="submit">
             Cadastrar
         </button>
-
-    </form>
+    <br/>
+    <br/>
     <Link to='/'>
         Voltar ao login
-    </Link>    
+    </Link>   
+    </form>
+   
     </div> 
     );
 }

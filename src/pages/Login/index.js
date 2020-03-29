@@ -44,6 +44,7 @@ export default function Login(){
     <div className="logintask">
     <form onSubmit={handleLogin}>
     <h1>Lista de Tarefas</h1>
+    <br/>
     <input 
     placeholder="Entre com o usuário"
     value={username}
@@ -55,7 +56,11 @@ export default function Login(){
     value={password}
     onChange={e=>setLoginPassword(e.target.value)}
     />  
-    <button type="submit">Entrar</button>
+    <br/>
+    <br/>
+    <button type="submit" class="btn btn-success">Entrar</button>
+    <br/>
+    <br/>
     <Link to='/signup'>
         Não tem registro?
     </Link>

@@ -5,21 +5,17 @@ import api from '../../services/api';
 
 import {useHistory} from 'react-router-dom';
 
-import './modalbox.css';
 
 export default function Profile(){
 
     const [tarefas, setTarefas]=useState([]);
-    
     const [descricao, setDescricao]=useState('');
     const [concluida, setConcluida]=useState('');
-    //const [state, setState]=useState('');
     const token=localStorage.getItem('token');
     const nomeUsuario=localStorage.getItem('usuario');
     const [edit, setEdit]=useState('');
-    //edit=true;
-    const history=useHistory();
 
+    const history=useHistory();
 
     function reloadPage(){
         api.get('tarefas/',{
@@ -66,7 +62,7 @@ export default function Profile(){
         }
     }
 
-    //atualiza a checkbox
+    //atualiza a checkbox e nome da edição
     async function handleState(id,nome_tar, valor){
         const retorno={
             id:id,
@@ -80,8 +76,6 @@ export default function Profile(){
                   Authorization:'Token '+token  
                 }
             });        
-        //Faz delete em tempo real na tela
-        reloadPage();
         
         }
         catch(err){
@@ -120,32 +114,11 @@ export default function Profile(){
 
     }
 
-    
     function cria_uma_linha(nome_tarefa, completada, id){
         return (
-
             <li key ={id}>
                 <div class="row">
-                        <div class="deleteArea">
-                            <button 
-                            class="btn btn-danger"
-                            onClick={
-                                ()=>handleDelete(id)    
-                            }
-                            >
-                            Deletar    
-                            </button>
-                        </div>
-
-                        <div class="updateArea">
-                            <button 
-                            class="btn btn-primary"
-                            onClick={e=>{setEdit(e.target.checked)}}
-                            >
-                            Editar    
-                            </button>
-                        </div>
-                            
+                               
                         <div class="checkArea">
                         <input type="checkbox" 
                         value={concluida}
@@ -155,11 +128,34 @@ export default function Profile(){
                         </div>
 
                         <div class="textArea">
-                            <input placeholder={nome_tarefa} 
-                            disabled={edit}>
+                            <input placeholder={nome_tarefa} onChange={(edit)=>setEdit(edit.target.value)}>
                                 
                             </input>
                         </div>
+
+                        <div class="updateArea">
+                        <button 
+                        class="btn btn-primary"
+                        onClick={()=>{
+                        handleState(id, edit,completada)
+                        }}
+                        >
+                        Salvar edição    
+                        </button>
+                        </div>
+
+                        <div class="deleteArea">
+                            <button 
+                            class="btn btn-danger"
+                            onClick={
+                                ()=>handleDelete(id)    
+                            }
+                            >
+                            Excluir    
+                            </button>
+                        </div>
+
+
                     </div>
                 </li>
         
@@ -167,33 +163,44 @@ export default function Profile(){
     }
     
 
-
+    //devolve o html formatado
     return (
         <div className="tasks-container">
-            <h4>Olá, {nomeUsuario}</h4>
-            <br/>
-            <input id="texto_de_tarefa"
-            type="text"
-            placeholder="Entre com a sua tarefa"
-            value={descricao}
-            onChange={e=> setDescricao(e.target.value)}
-            required/>
-
-            <br/><br/>
-
-            <input 
-            id="botao_de_adicionar" 
-            type="button" 
-            onClick={handleNewTask} 
-            class="btn btn-success" 
-            value="Adicionar tarefa" />
-
+            
+            <div className="logoutArea">
             <button onClick={handleLogout} class="btn btn-dark">Logout</button>
+            </div>
+
+            <div className="Header-tasks">
+            
+                <h4>Olá, {nomeUsuario}</h4>
+                <br/>
+                
+                <div class="row">
+                <input id="texto_de_tarefa"
+                type="text"
+                placeholder="Entre com a sua tarefa"
+                className="newTaskInput"
+                value={descricao}
+                onChange={e=> setDescricao(e.target.value)}
+                required/>
+
+                <input 
+                id="botao_de_adicionar" 
+                type="button" 
+                onClick={handleNewTask} 
+                class="btn btn-success" 
+                value="Adicionar tarefa" />
+                </div>
+                
+            </div>
+
             <ul>
             {tarefas.map(tarefa =>(
                 cria_uma_linha(tarefa.descricao,tarefa.concluida, tarefa.id)
                 )
-            )}  
+            )}
+            
             </ul>
         </div>
     );

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <img align="left" width="300" height="200" src="https://1quxc51443zg3oix7e35dnvg-wpengine.netdna-ssl.com/wp-content/uploads/2014/05/ossystems-logo.jpg">
 
@@ -61,6 +62,8 @@ E sim, essa é uma screenshot do todomvc e você pode se inspirar nela, sem copi
 =======
 
 
+=======
+>>>>>>> vagner
 # Todo List
 
 ## Descrição
@@ -266,4 +269,7 @@ https://scotch.io/tutorials/build-a-to-do-application-using-django-and-react](ht
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> vagner
